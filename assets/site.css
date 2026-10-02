@@ -1,0 +1,392 @@
+/* Kevin Chan — personal site
+   Palette is taken from the torii-gate photo in the header. */
+
+:root {
+  --vermilion: #d8431b;
+  --vermilion-deep: #b3340f;
+  --cedar: #16261e;
+  --moss: #5a6b61;
+  --mist: #edf0ee;
+  --paper: #ffffff;
+  --line: #d6ddd9;
+
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+  margin: 0;
+  background: var(--mist);
+  color: var(--cedar);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--vermilion-deep); text-underline-offset: 3px; }
+a:hover { color: var(--vermilion); }
+
+:focus-visible {
+  outline: 3px solid var(--vermilion);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1rem; }
+p:last-child { margin-bottom: 0; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  background: var(--cedar);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  z-index: 20;
+}
+.skip-link:focus { left: 8px; }
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--cedar);
+  color: #fff;
+}
+
+.topbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.topbar .brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.topbar nav ul { display: flex; gap: 4px; }
+
+.topbar nav a {
+  display: block;
+  padding: 8px 12px;
+  color: #cfdad3;
+  text-decoration: none;
+  font-size: 0.92rem;
+  border-radius: 6px;
+}
+.topbar nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+
+/* ---------- Page frame ---------- */
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 20px 56px;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+}
+
+.card + .card { margin-top: 20px; }
+
+.card h2 {
+  font-size: 1.45rem;
+  margin-bottom: 18px;
+}
+
+/* ---------- Profile header ---------- */
+
+.profile {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.cover {
+  height: 220px;
+  background: var(--cedar) url("../images/cover.jpg") center / cover no-repeat;
+}
+
+.profile-body {
+  position: relative;
+  padding: 0 32px 30px;
+}
+
+.avatar {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  border: 5px solid var(--paper);
+  margin-top: -74px;
+  object-fit: cover;
+  background: var(--mist);
+}
+
+.profile-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-top: 14px;
+}
+
+.profile h1 {
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+}
+
+.headline {
+  font-size: 1.15rem;
+  margin: 6px 0 4px;
+  max-width: 34em;
+}
+
+.where { color: var(--moss); font-size: 0.95rem; margin: 0; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid var(--vermilion);
+}
+
+.btn-solid { background: var(--vermilion); color: #fff; }
+.btn-solid:hover { background: var(--vermilion-deep); border-color: var(--vermilion-deep); color: #fff; }
+
+.btn-line { background: transparent; color: var(--vermilion-deep); }
+.btn-line:hover { background: var(--vermilion); color: #fff; }
+
+/* ---------- Two-column layout ---------- */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+  margin-top: 20px;
+  align-items: start;
+}
+
+.layout .card + .card { margin-top: 20px; }
+
+.aside { position: sticky; top: 76px; }
+
+.aside .card { padding: 22px; }
+.aside h2 { font-size: 1.15rem; margin-bottom: 12px; }
+.aside .card + .card { margin-top: 20px; }
+
+/* ---------- About ---------- */
+
+.about p { max-width: 62ch; }
+
+/* ---------- Experience (a real sequence, so it gets a timeline) ---------- */
+
+.timeline { position: relative; }
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--line);
+}
+
+.job { position: relative; padding-left: 34px; }
+.job + .job { margin-top: 26px; }
+
+.job::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--moss);
+}
+
+.job.current::before { border-color: var(--vermilion); background: var(--vermilion); }
+
+.job h3 { font-size: 1.1rem; }
+
+.job .org { margin: 2px 0 0; font-weight: 600; }
+
+.job .when { color: var(--moss); font-size: 0.9rem; margin: 0 0 8px; }
+
+.job ul { padding-left: 1.1em; list-style: disc; max-width: 62ch; }
+.job li + li { margin-top: 4px; }
+.job li::marker { color: var(--moss); }
+
+/* ---------- Projects ---------- */
+
+.feature-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.feature {
+  border-radius: 14px;
+  padding: 22px;
+  background: var(--cedar);
+  color: #e6ede9;
+}
+
+.feature.plain {
+  background: var(--mist);
+  color: var(--cedar);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.feature h3 { font-size: 1.2rem; color: inherit; margin-bottom: 8px; }
+.feature p { font-size: 0.97rem; }
+.feature a { color: #ffb59f; font-weight: 600; }
+.feature a:hover { color: #fff; }
+.feature.plain a { color: var(--vermilion-deep); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+
+.tags li {
+  font-size: 0.82rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.feature.plain .tags li { border-color: var(--line); background: var(--paper); }
+
+.project-list { margin-top: 12px; }
+
+.project {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.project img {
+  width: 168px;
+  height: 118px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+
+.project h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.project p { font-size: 0.97rem; color: #33443b; }
+
+/* ---------- Sidebar bits ---------- */
+
+.facts li + li { margin-top: 14px; }
+.facts strong { display: block; font-size: 0.97rem; }
+.facts span { color: var(--moss); font-size: 0.92rem; }
+
+.skill-group + .skill-group { margin-top: 16px; }
+.skill-group h3 { font-size: 0.95rem; margin-bottom: 8px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chips li {
+  font-size: 0.86rem;
+  padding: 4px 11px;
+  border-radius: 6px;
+  background: var(--mist);
+  border: 1px solid var(--line);
+}
+
+.link-list li + li { margin-top: 8px; }
+.link-list a { font-weight: 600; }
+
+/* ---------- Contact + footer ---------- */
+
+.contact {
+  background: var(--cedar);
+  border-color: var(--cedar);
+  color: #e6ede9;
+}
+.contact h2 { color: #fff; }
+.contact a.mail {
+  display: inline-block;
+  margin-top: 6px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  font-weight: 700;
+  text-decoration-color: var(--vermilion);
+  text-decoration-thickness: 3px;
+}
+.contact a.mail:hover { color: #ffb59f; }
+
+footer.site-footer {
+  color: var(--moss);
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 0 20px 40px;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .aside { position: static; }
+}
+
+@media (max-width: 640px) {
+  .topbar nav { display: none; }
+  .cover { height: 150px; }
+  .avatar { width: 112px; height: 112px; margin-top: -56px; }
+  .profile-body { padding: 0 20px 24px; }
+  .card { padding: 22px 20px; }
+  .card.profile { padding: 0; }
+  .feature-pair { grid-template-columns: minmax(0, 1fr); }
+  .project { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .project img { width: 100%; height: 160px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
